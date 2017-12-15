@@ -1,0 +1,12 @@
+# auto-saves
+*~
+
+# compiled objects
+*.o
+*.Po
+
+# specific directories
+/.anjuta/*
+/autom4te.cache/*
+/Debug/src/.deps/*
+
