@@ -1,0 +1,8 @@
+# autosaves
+*~
+*.asv
+
+# compiled objects
+*.o
+*.Po
+*.pyc
