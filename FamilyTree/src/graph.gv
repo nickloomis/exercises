@@ -1,0 +1,20 @@
+graph {
+"nullptr+0x7ffc4c117ef0" [shape=box label=""];
+"0x7ffc4c117e50" [shape=box label="A"];
+"0x7ffc4c117e50+0x7ffc4c117ea0" [shape=box label=""];
+"0x7ffc4c117ea0" [shape=box label="B"];
+"0x7ffc4c117ef0" [shape=box label="C"];
+"0x7ffc4c117f40" [shape=box label="C+1"];
+"0x7ffc4c117e50+0x7ffc4c117ea0" -- "0x7ffc4c117ef0";
+"0x7ffc4c117e50" -- "0x7ffc4c117e50+0x7ffc4c117ea0";
+"0x7ffc4c117ea0" -- "0x7ffc4c117e50+0x7ffc4c117ea0";
+"nullptr+0x7ffc4c117ef0" -- "0x7ffc4c117f40";
+"0x7ffc4c117ef0" -- "nullptr+0x7ffc4c117ef0";
+}
+
+
+// oh -- probably want to either fix the rank
+
+// use digraph to figure out why the ranks are weird, or graph when it's ok
+//
+// {rank=same; node1 node2 ...;}
