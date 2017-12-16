@@ -4,10 +4,9 @@
 #include <limits>
 #include <ostream>
 #include <string>
-#include <vector>
 
 #include "relationship_type.h"
-#include "typedefs.h"
+#include "tree.h"
 
 namespace family_tree {
 
@@ -29,7 +28,7 @@ class GraphEmitter {
  public:
   GraphEmitter(const GraphEmitterOptions& options);
 
-  void Emit(const NodeMap& nodes, const std::vector<TreeEdge>& edges, std::ostream& output_stream) const;
+  void Emit(const Tree& tree, std::ostream& output_stream) const;
 
   // Returns a set of options for building a tree given the intended graph. The
   // options can be used directly when initializing a new TreeBuilder.

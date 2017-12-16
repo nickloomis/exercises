@@ -101,9 +101,11 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_familytree_OBJECTS = main.$(OBJEXT) person.$(OBJEXT) \
-	tree_builder.$(OBJEXT) graph_emitter.$(OBJEXT) \
-	relationship_labeler.$(OBJEXT)
+am_familytree_OBJECTS = familytree-main.$(OBJEXT) \
+	familytree-person.$(OBJEXT) familytree-tree_builder.$(OBJEXT) \
+	familytree-graph_emitter.$(OBJEXT) \
+	familytree-relationship_labeler.$(OBJEXT) \
+	familytree-tree.$(OBJEXT)
 familytree_OBJECTS = $(am_familytree_OBJECTS)
 familytree_DEPENDENCIES =
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -111,7 +113,7 @@ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
 familytree_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(familytree_CXXFLAGS) \
 	$(CXXFLAGS) $(familytree_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -329,14 +331,15 @@ familytree_SOURCES = \
 	person.h \
 	tree_builder.h \
 	tree_builder.cpp \
-	tree_node.h \
 	typedefs.h \
 	graph_emitter.cpp \
 	graph_emitter.h \
 	relationship_labeler.cpp \
 	relationship_labeler.h \
-	relationship_type.h
+	relationship_type.h \
+	tree.cpp
 
+familytree_CXXFLAGS = -std=c++11 
 familytree_LDFLAGS = 
 familytree_LDADD = 
 all: all-am
@@ -432,11 +435,12 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/graph_emitter.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/person.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/relationship_labeler.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tree_builder.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/familytree-graph_emitter.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/familytree-main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/familytree-person.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/familytree-relationship_labeler.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/familytree-tree.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/familytree-tree_builder.Po@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -458,6 +462,90 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LTCXXCOMPILE) -c -o $@ $<
+
+familytree-main.o: main.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -MT familytree-main.o -MD -MP -MF $(DEPDIR)/familytree-main.Tpo -c -o familytree-main.o `test -f 'main.cc' || echo '$(srcdir)/'`main.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/familytree-main.Tpo $(DEPDIR)/familytree-main.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='main.cc' object='familytree-main.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -c -o familytree-main.o `test -f 'main.cc' || echo '$(srcdir)/'`main.cc
+
+familytree-main.obj: main.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -MT familytree-main.obj -MD -MP -MF $(DEPDIR)/familytree-main.Tpo -c -o familytree-main.obj `if test -f 'main.cc'; then $(CYGPATH_W) 'main.cc'; else $(CYGPATH_W) '$(srcdir)/main.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/familytree-main.Tpo $(DEPDIR)/familytree-main.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='main.cc' object='familytree-main.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -c -o familytree-main.obj `if test -f 'main.cc'; then $(CYGPATH_W) 'main.cc'; else $(CYGPATH_W) '$(srcdir)/main.cc'; fi`
+
+familytree-person.o: person.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -MT familytree-person.o -MD -MP -MF $(DEPDIR)/familytree-person.Tpo -c -o familytree-person.o `test -f 'person.cpp' || echo '$(srcdir)/'`person.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/familytree-person.Tpo $(DEPDIR)/familytree-person.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='person.cpp' object='familytree-person.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -c -o familytree-person.o `test -f 'person.cpp' || echo '$(srcdir)/'`person.cpp
+
+familytree-person.obj: person.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -MT familytree-person.obj -MD -MP -MF $(DEPDIR)/familytree-person.Tpo -c -o familytree-person.obj `if test -f 'person.cpp'; then $(CYGPATH_W) 'person.cpp'; else $(CYGPATH_W) '$(srcdir)/person.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/familytree-person.Tpo $(DEPDIR)/familytree-person.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='person.cpp' object='familytree-person.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -c -o familytree-person.obj `if test -f 'person.cpp'; then $(CYGPATH_W) 'person.cpp'; else $(CYGPATH_W) '$(srcdir)/person.cpp'; fi`
+
+familytree-tree_builder.o: tree_builder.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -MT familytree-tree_builder.o -MD -MP -MF $(DEPDIR)/familytree-tree_builder.Tpo -c -o familytree-tree_builder.o `test -f 'tree_builder.cpp' || echo '$(srcdir)/'`tree_builder.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/familytree-tree_builder.Tpo $(DEPDIR)/familytree-tree_builder.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='tree_builder.cpp' object='familytree-tree_builder.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -c -o familytree-tree_builder.o `test -f 'tree_builder.cpp' || echo '$(srcdir)/'`tree_builder.cpp
+
+familytree-tree_builder.obj: tree_builder.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -MT familytree-tree_builder.obj -MD -MP -MF $(DEPDIR)/familytree-tree_builder.Tpo -c -o familytree-tree_builder.obj `if test -f 'tree_builder.cpp'; then $(CYGPATH_W) 'tree_builder.cpp'; else $(CYGPATH_W) '$(srcdir)/tree_builder.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/familytree-tree_builder.Tpo $(DEPDIR)/familytree-tree_builder.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='tree_builder.cpp' object='familytree-tree_builder.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -c -o familytree-tree_builder.obj `if test -f 'tree_builder.cpp'; then $(CYGPATH_W) 'tree_builder.cpp'; else $(CYGPATH_W) '$(srcdir)/tree_builder.cpp'; fi`
+
+familytree-graph_emitter.o: graph_emitter.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -MT familytree-graph_emitter.o -MD -MP -MF $(DEPDIR)/familytree-graph_emitter.Tpo -c -o familytree-graph_emitter.o `test -f 'graph_emitter.cpp' || echo '$(srcdir)/'`graph_emitter.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/familytree-graph_emitter.Tpo $(DEPDIR)/familytree-graph_emitter.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='graph_emitter.cpp' object='familytree-graph_emitter.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -c -o familytree-graph_emitter.o `test -f 'graph_emitter.cpp' || echo '$(srcdir)/'`graph_emitter.cpp
+
+familytree-graph_emitter.obj: graph_emitter.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -MT familytree-graph_emitter.obj -MD -MP -MF $(DEPDIR)/familytree-graph_emitter.Tpo -c -o familytree-graph_emitter.obj `if test -f 'graph_emitter.cpp'; then $(CYGPATH_W) 'graph_emitter.cpp'; else $(CYGPATH_W) '$(srcdir)/graph_emitter.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/familytree-graph_emitter.Tpo $(DEPDIR)/familytree-graph_emitter.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='graph_emitter.cpp' object='familytree-graph_emitter.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -c -o familytree-graph_emitter.obj `if test -f 'graph_emitter.cpp'; then $(CYGPATH_W) 'graph_emitter.cpp'; else $(CYGPATH_W) '$(srcdir)/graph_emitter.cpp'; fi`
+
+familytree-relationship_labeler.o: relationship_labeler.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -MT familytree-relationship_labeler.o -MD -MP -MF $(DEPDIR)/familytree-relationship_labeler.Tpo -c -o familytree-relationship_labeler.o `test -f 'relationship_labeler.cpp' || echo '$(srcdir)/'`relationship_labeler.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/familytree-relationship_labeler.Tpo $(DEPDIR)/familytree-relationship_labeler.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='relationship_labeler.cpp' object='familytree-relationship_labeler.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -c -o familytree-relationship_labeler.o `test -f 'relationship_labeler.cpp' || echo '$(srcdir)/'`relationship_labeler.cpp
+
+familytree-relationship_labeler.obj: relationship_labeler.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -MT familytree-relationship_labeler.obj -MD -MP -MF $(DEPDIR)/familytree-relationship_labeler.Tpo -c -o familytree-relationship_labeler.obj `if test -f 'relationship_labeler.cpp'; then $(CYGPATH_W) 'relationship_labeler.cpp'; else $(CYGPATH_W) '$(srcdir)/relationship_labeler.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/familytree-relationship_labeler.Tpo $(DEPDIR)/familytree-relationship_labeler.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='relationship_labeler.cpp' object='familytree-relationship_labeler.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -c -o familytree-relationship_labeler.obj `if test -f 'relationship_labeler.cpp'; then $(CYGPATH_W) 'relationship_labeler.cpp'; else $(CYGPATH_W) '$(srcdir)/relationship_labeler.cpp'; fi`
+
+familytree-tree.o: tree.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -MT familytree-tree.o -MD -MP -MF $(DEPDIR)/familytree-tree.Tpo -c -o familytree-tree.o `test -f 'tree.cpp' || echo '$(srcdir)/'`tree.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/familytree-tree.Tpo $(DEPDIR)/familytree-tree.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='tree.cpp' object='familytree-tree.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -c -o familytree-tree.o `test -f 'tree.cpp' || echo '$(srcdir)/'`tree.cpp
+
+familytree-tree.obj: tree.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -MT familytree-tree.obj -MD -MP -MF $(DEPDIR)/familytree-tree.Tpo -c -o familytree-tree.obj `if test -f 'tree.cpp'; then $(CYGPATH_W) 'tree.cpp'; else $(CYGPATH_W) '$(srcdir)/tree.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/familytree-tree.Tpo $(DEPDIR)/familytree-tree.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='tree.cpp' object='familytree-tree.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(familytree_CXXFLAGS) $(CXXFLAGS) -c -o familytree-tree.obj `if test -f 'tree.cpp'; then $(CYGPATH_W) 'tree.cpp'; else $(CYGPATH_W) '$(srcdir)/tree.cpp'; fi`
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

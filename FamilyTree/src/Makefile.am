@@ -19,13 +19,15 @@ familytree_SOURCES = \
 	person.h \
 	tree_builder.h \
 	tree_builder.cpp \
-	tree_node.h \
 	typedefs.h \
 	graph_emitter.cpp \
 	graph_emitter.h \
 	relationship_labeler.cpp \
 	relationship_labeler.h \
-	relationship_type.h
+	relationship_type.h \
+	tree.cpp
+
+familytree_CXXFLAGS = -std=c++11 
 
 familytree_LDFLAGS = 
 

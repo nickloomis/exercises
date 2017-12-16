@@ -31,7 +31,7 @@ void Person::PrintRelations() const {
 
 void Person::GetFamilyTree(GraphEmitter* grapher, std::ostream& output_stream) const {
   TreeBuilder tree_builder(this, grapher->TreeOptions());
-  grapher->Emit(tree_builder.nodes(), tree_builder.edges(), output_stream);
+  grapher->Emit(tree_builder.tree(), output_stream);
   // TODO(nloomis): return something useful.
 }
 

@@ -58,13 +58,13 @@ void TreeBuilder::TraceNextUpstream() {
   upstream_to_trace_.pop_back();
 
   std::cout << "Next upstream is " << traceable.person->name() << "\n";
-  if (!NodeExists(traceable.person)) {
+  if (!tree_.NodeExists(traceable.person)) {
     // Add a node for the person.
     std::cout << "Adding a node for " << traceable.person->name() <<
      " (" << traceable.person << ")\n";
     std::cout << " generation: " << traceable.generation << "\n";
-    nodes_.emplace(NodeKey(traceable.person), TreeNode(traceable.person->name(),
-                   relationship_.Label(traceable.person), traceable.generation));
+    tree_.AddNode(traceable.person, TreeNode(traceable.person->name(),
+                  relationship_.Label(traceable.person), traceable.generation));
   } else {
     std::cout << "Node for " << traceable.person->name() << " (" <<
      traceable.person << ") exists already\n";
@@ -79,20 +79,20 @@ void TreeBuilder::TraceNextUpstream() {
 
   const std::list<Person*>& parents = traceable.person->parents();
   if (!parents.empty()) {
-    NodeMapKey offspring_key = NodeKey(parents);
-    AddTreeEdge(offspring_key, NodeKey(traceable.person));
+    NodeMapKey offspring_key = tree_.NodeKey(parents);
+    tree_.AddTreeEdge(offspring_key, tree_.NodeKey(traceable.person));
 
     // Add an offspring node for these parents if it doesn't aleady exist.
-    if (!NodeExists(parents)) {
+    if (!tree_.NodeExists(parents)) {
       std::cout << " adding offspring node\n";
-      nodes_.emplace(offspring_key, TreeNode::OffspringNode(traceable.generation - 1));
+      tree_.AddNode(parents, TreeNode::OffspringNode(traceable.generation - 1));
       for (const Person* parent : parents) {
-        AddTreeEdge(NodeKey(parent), offspring_key);
+        tree_.AddTreeEdge(tree_.NodeKey(parent), offspring_key);
       }
     }
 
     for (const Person* parent : parents) {
-      if (!NodeExists(parent)) {
+      if (!tree_.NodeExists(parent)) {
         std::cout << " adding " << parent->name() << " to up-todo\n";
         upstream_to_trace_.emplace_back(parent, traceable.generation - 1);
         std::cout << " adding " << parent->name() << " to down-todo\n";
@@ -121,39 +121,13 @@ void TreeBuilder::TraceNextDownstream() {
     return;
   }
   for (Person* descendant : descendants) {
-    if (!NodeExists(descendant)) {
+    if (!tree_.NodeExists(descendant)) {
 //      upstream_to_trace_.push(descendant);
       std::cout << " adding descendant " << descendant->name() << " to up-todo\n";
       upstream_to_trace_.emplace_back(descendant, traceable.generation + 1);
     }
   }
   std::cout << " exiting TraceNextDownstream()\n";
-}
-
-const NodeMapKey TreeBuilder::NodeKey(const Person* person) const {
-  return std::make_pair(person, person);
-}
-
-const NodeMapKey TreeBuilder::NodeKey(const std::list<Person*>& parents) const {
-  if (parents.empty()) {
-    return std::make_pair(nullptr, nullptr);
-  } else if (parents.size() == 1) {
-    return std::make_pair(nullptr, parents.front());
-  }
-  return std::make_pair(std::min(parents.front(), parents.back()), 
-                        std::max(parents.front(), parents.back()));
-}
-
-bool TreeBuilder::NodeExists(const Person* person) const {
-  return nodes_.find(NodeKey(person)) != nodes_.end();
-}
-
-bool TreeBuilder::NodeExists(const std::list<Person*>& parents) const {
-  return nodes_.find(NodeKey(parents)) != nodes_.end();
-}
-
-void TreeBuilder::AddTreeEdge(const NodeMapKey& node1, const NodeMapKey& node2) {
-  edges_.emplace_back(std::make_pair(node1, node2));
 }
 
 }  // namespace family_tree

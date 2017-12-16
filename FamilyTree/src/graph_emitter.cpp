@@ -32,16 +32,16 @@ GraphEmitter::GraphEmitter(const GraphEmitterOptions& options)
     : options_(options) {
 }
 
-void GraphEmitter::Emit(const NodeMap& nodes, const std::vector<TreeEdge>& edges, std::ostream& output_stream) const {
+void GraphEmitter::Emit(const Tree& tree, std::ostream& output_stream) const {
   // Start the graph.
   output_stream << "graph {\n";
 
-  std::cout << "Emitting graph with " << nodes.size() << " nodes and " << 
-    edges.size() << " edges\n";
+  std::cout << "Emitting graph with " << tree.nodes().size() << " nodes and " << 
+    tree.edges().size() << " edges\n";
 
   // TODO(nloomis): {rank=same; node1 node2 node3;}
 
-  for (const auto& kv : nodes) {
+  for (const auto& kv : tree.nodes()) {
     output_stream << UniqueNodeIdString(kv.first);
     if (kv.second.node_type == TreeNodeType::INDIVIDUAL) {
       output_stream << " [shape=box, label=\"" << kv.second.name_label;
@@ -65,8 +65,8 @@ void GraphEmitter::Emit(const NodeMap& nodes, const std::vector<TreeEdge>& edges
     }
   }
 
-  for (const TreeEdge& edge : edges) {
-    output_stream << UniqueNodeIdString(edge.first) << "--" << UniqueNodeIdString(edge.second) << ";\n";
+  for (const TreeEdge& edge : tree.edges()) {
+    output_stream << UniqueNodeIdString(edge.tail_node) << "--" << UniqueNodeIdString(edge.head_node) << ";\n";
   }
 
   // End of graph definition.
