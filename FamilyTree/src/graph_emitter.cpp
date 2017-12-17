@@ -5,9 +5,11 @@
 #include <string>
 
 #include "tree_builder.h"
+#include "typedefs.h"
 
 namespace {
 
+// Returns a unique identifier string for the input NodeMapKey.
 std::string UniqueNodeIdString(const family_tree::NodeMapKey& key) {
   std::stringstream stream;
   stream << "\"";
@@ -45,7 +47,8 @@ void GraphEmitter::Emit(const Tree& tree, std::ostream& output_stream) const {
     output_stream << UniqueNodeIdString(kv.first);
     if (kv.second.node_type == TreeNodeType::INDIVIDUAL) {
       output_stream << " [shape=box, label=\"" << kv.second.name_label;
-      const std::string& relationship_string = RelationshipString(kv.second.relationship);
+      const std::string& relationship_string =
+          RelationshipString(kv.second.relationship);
       if (!relationship_string.empty()) {
         output_stream << "\n" << relationship_string;
       }
@@ -61,12 +64,14 @@ void GraphEmitter::Emit(const Tree& tree, std::ostream& output_stream) const {
       // TODO(nloomis): highlight the root individual
     } else {
       // offspring node.
-      output_stream << "[shape=circle, style=filled, label=\"\", height=0.1, width=0.1];\n";
+      output_stream << "[shape=circle, style=filled, label=\"\", " <<
+       "height=0.1, width=0.1];\n";
     }
   }
 
   for (const TreeEdge& edge : tree.edges()) {
-    output_stream << UniqueNodeIdString(edge.tail_node) << "--" << UniqueNodeIdString(edge.head_node) << ";\n";
+    output_stream << UniqueNodeIdString(edge.tail_node) << "--" <<
+     UniqueNodeIdString(edge.head_node) << ";\n";
   }
 
   // End of graph definition.
@@ -80,7 +85,8 @@ TreeBuilderOptions GraphEmitter::TreeOptions() const {
   return tree_options;
 }
 
-std::string GraphEmitter::RelationshipString(const RelationshipType& relationship) const {
+std::string GraphEmitter::RelationshipString(
+    const RelationshipType& relationship) const {
   switch (relationship) {
     case RelationshipType::SELF: return "self";
     case RelationshipType::PARENT: return "parent";

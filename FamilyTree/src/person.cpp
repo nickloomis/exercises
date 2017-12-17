@@ -29,7 +29,10 @@ void Person::PrintRelations() const {
   }
 }
 
-void Person::GetFamilyTree(GraphEmitter* grapher, std::ostream& output_stream) const {
+void Person::GetFamilyTree(GraphEmitter* grapher, std::ostream& output_stream)
+ const {
+  // TreeBuilder is a factory class, and builds the tree during its
+  // construction.
   TreeBuilder tree_builder(this, grapher->TreeOptions());
   grapher->Emit(tree_builder.tree(), output_stream);
   // TODO(nloomis): return something useful.
@@ -38,10 +41,12 @@ void Person::GetFamilyTree(GraphEmitter* grapher, std::ostream& output_stream) c
 void Person::AddDescendant(Person* const descendant) {
   if (std::find(descendants_.begin(), descendants_.end(), descendant) ==
       descendants_.end()) {
-    std::cout << "Descendant " << descendant->name() << " being added to " << name_ << "\n";
+    std::cout << "Descendant " << descendant->name() << " being added to " <<
+     name_ << "\n";
     descendants_.push_back(descendant);
   } else {
-    std::cout << "Descendant " << descendant->name() << " is already listed by " << name_ << "\n";
+    std::cout << "Descendant " << descendant->name() <<
+     " is already listed by " << name_ << "\n";
   }
 }
 

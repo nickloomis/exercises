@@ -10,6 +10,8 @@ namespace family_tree {
 class Person;
 struct TreeNode;
 
+// TODO(nloomis): can these be defined in tree.h only? are they re-used elsewhere?
+
 // Key for a map which stores unique nodes in a family tree.
 typedef std::pair<const Person*, const Person*> NodeMapKey;
 

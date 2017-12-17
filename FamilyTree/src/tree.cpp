@@ -10,12 +10,20 @@ TreeNode TreeNode::OffspringNode(int relative_generation) {
   return node;
 }
 
-void Tree::AddNode(const Person* person, const TreeNode& node) {
-  nodes_.emplace(NodeKey(person), node);
+bool Tree::AddNode(const Person* person, const TreeNode& node) {
+  if (!NodeExists(person)) {
+    nodes_.emplace(GetNodeMapKey(person), node);
+    return true;
+  }
+  return false;
 }
 
-void Tree::AddNode(const std::list<Person*>& parents, const TreeNode& node) {
-  nodes_.emplace(NodeKey(parents), node);
+bool Tree::AddNode(const std::list<Person*>& parents, const TreeNode& node) {
+  if (!NodeExists(parents)) {
+    nodes_.emplace(GetNodeMapKey(parents), node);
+    return true;
+  }
+  return false;
 }
 
 void Tree::AddTreeEdge(const NodeMapKey& node1, const NodeMapKey& node2) {
@@ -23,18 +31,18 @@ void Tree::AddTreeEdge(const NodeMapKey& node1, const NodeMapKey& node2) {
 }
 
 bool Tree::NodeExists(const Person* person) const {
-  return nodes_.find(NodeKey(person)) != nodes_.end();
+  return nodes_.find(GetNodeMapKey(person)) != nodes_.end();
 }
 
 bool Tree::NodeExists(const std::list<Person*>& parents) const {
-  return nodes_.find(NodeKey(parents)) != nodes_.end();
+  return nodes_.find(GetNodeMapKey(parents)) != nodes_.end();
 }
 
-const NodeMapKey Tree::NodeKey(const Person* person) const {
+const NodeMapKey Tree::GetNodeMapKey(const Person* person) const {
   return std::make_pair(person, person);
 }
 
-const NodeMapKey Tree::NodeKey(const std::list<Person*>& parents) const {
+const NodeMapKey Tree::GetNodeMapKey(const std::list<Person*>& parents) const {
   if (parents.empty()) {
     return std::make_pair(nullptr, nullptr);
   } else if (parents.size() == 1) {
