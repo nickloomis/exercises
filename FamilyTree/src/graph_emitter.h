@@ -1,3 +1,26 @@
+// A family tree is a graph -- and there are any number of libraries and
+// utilities for plotting graphs. This implementation emits a DOT file which
+// provides node (vertex) and edge metadata. The DOT file can then be consumed
+// by a plotting tool which decides how to distribute and draw the nodes.
+//
+// The suggested tool for plotting DOT files is Graphviz, available from
+// http://www.graphviz.org, licensed under the Common Public License v1. It has
+// both command-line binaries and library versions, is cross-platform, and has
+// bindings/ports for a variety of languages (including Java and Javascript).
+// The Graphviz 'dot' binary, in particular, is ideal for plotting the DOT files
+// to more closely resemble heirarchical family trees.
+//
+//   Example: if the emitted graph is saved to family_tree_graph.gv, use
+//
+//   >> dot -Tpng family_tree_graph.gv >> family_tree.png
+//
+//   to generate a PNG image of the tree and pipe it into a file.
+//
+// The implementation in this file uses streams for the data which would go into
+// the DOT file, leaving the destination up to the user. For example, the file
+// could be saved to a ofstream that points to a file on disk, or it could be
+// routed completely in-memory for access by a library or further processing.
+
 #ifndef FAMILY_TREE_GRAPH_EMITTER_H_
 #define FAMILY_TREE_GRAPH_EMITTER_H_
 
@@ -26,9 +49,11 @@ struct GraphEmitterOptions {
 
   // Strings for the background color of the node when drawing the reference
   // individual's node or any other node. See
-  // https://graphviz.gitlab.io/_pages/doc/info/attrs.html#k:color for more
-  // details about specifying colors.
-  std::string reference_individual_background_color = "azure1";
+  //   https://graphviz.gitlab.io/_pages/doc/info/attrs.html#k:color for more
+  // details about specifying colors, or
+  //   https://graphviz.gitlab.io/_pages/doc/info/colors.html
+  // for a large list of named colors.
+  std::string reference_individual_background_color = "azure1";  // light blue
   std::string default_individual_background_color = "white";
 
   // Extensions of this struct include:

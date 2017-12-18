@@ -1,4 +1,16 @@
-// TODO(nloomis): overview of "tree" concepts, different node types.
+// A family tree is represented in this implementation as a directed graph which
+// shows the "flow" of ancestral information from generation to generation. Like
+// any graph, the Tree is composed of nodes (or vertices) and edges.
+//
+// Nodes are distinct combinations of ancestral information, and come in two
+// types. The first type is an individual person. The second type is an
+// "offspring" node and represents a pairing of two individuals which resulted
+// in descendants. The use of an offspring node is not strictly necessary, but
+// does result in a cleaner image when the tree is rendered.
+//
+// Edges denote direct relationships bewtween nodes: the parents which paired
+// together for an offspring node and which descendants came from an offspring
+// node.
 
 #ifndef FAMILY_TREE_TREE_NODE_H_
 #define FAMILY_TREE_TREE_NODE_H_
@@ -16,36 +28,45 @@ namespace family_tree {
 enum class TreeNodeType {
   // Node which represents a single person.
   INDIVIDUAL,
-  // Node which represents 
+
+  // Node which represents the collection of offspring from a unique pairing of
+  // two parent individuals.
   OFFSPRING,
 };
 
+// TreeNodes contain the metadata for a single node. A graph emitter is expected
+// to use the metadata when rendering the ndoe. 
 struct TreeNode {
-  TreeNode(const std::string& name_label, const RelationshipType& relationship, int relative_generation)
+  TreeNode(const std::string& name_label,
+           const RelationshipType& relationship,
+           int relative_generation)
     : name_label(name_label),
       relationship(relationship),
       relative_generation(relative_generation),
       node_type(TreeNodeType::INDIVIDUAL) {
   }
 
+  // Returns a TreeNode for an offspring node. The following values are set:
+  //  name_label: empty string
+  //  relationship: RelationshipType::PARENT
+  //  node_type: TreeNodeType::OFFSPRING
   static TreeNode OffspringNode(int relative_generation);
-
-  // TODO(nloomis): static TreeNode TreeNode::OffspringNode(generation) fcn;
-  // will need to explain why that's being done (clarity) versus a c'tor which
-  // is nearly empty
+  // Note: a static is used here as a factory function.
 
   // Name to display on the node, such as the person's name.
   std::string name_label;
+
   // An enum which gives this node's relationship relative to the reference
   // individual at the center of the tree.
   RelationshipType relationship;
+
   // The number of generations remove this node is from the reference
   // individual. A value of zero is the same generation as the reference (eg,
   // part of the same cohort.) Negative values denote generations which came
   // before the reference (eg, parents, aunts/uncles, grandparents), while
   // positive values denote later generations (eg, children, grandchildren).
   int relative_generation;  // note: used for drawing graph
-  // TODO(nloomis): TreeNodeType isn't a good descriptor. same for relationship "type".
+
   TreeNodeType node_type;
 };
 
@@ -65,27 +86,39 @@ struct TreeEdge {
 class Tree {
  public:
   // Accessors to member data.
-  const  NodeMap& nodes() const {return nodes_; }
+  const NodeMap& nodes() const {return nodes_; }
   const std::vector<TreeEdge>& edges() const {return edges_; }
 
-  bool AddNode(const Person* person, const TreeNode& node);
-  bool AddNode(const std::list<Person*>& parents, const TreeNode& node);
-  void AddTreeEdge(const NodeMapKey& node1, const NodeMapKey& node2);
+  // Attempts to add the supplied TreeNode to the nodes_ map for an individual
+  // person, returning tree if successful or false if the node already exists.
+  bool AddIndividualNode(const Person* person, const TreeNode& node);
 
+  // Attempts to add an offspring node for a set of parents, at a specific
+  // relative generation (usually the same as the parents' nodes).
+  bool AddOffspringNode(const std::list<Person*>& parents,
+                        int relative_generation);
+
+  // Adds an edge between two NodeMapKeys.
+  void AddTreeEdge(const NodeMapKey& tail_node, const NodeMapKey& head_node);
+
+  // Returns true if a node exists in the graph, false if it does not. The first
+  // form is used for individuals, while the second is used for offspring nodes.
   bool NodeExists(const Person* person) const;
   bool NodeExists(const std::list<Person*>& parents) const;
 
+  // Generates a unique key for the Tree's NodeMap. The first form is for
+  // individual people. The second form is for offspring nodes. 
   const NodeMapKey GetNodeMapKey(const Person*) const;
   const NodeMapKey GetNodeMapKey(const std::list<Person*>& parents) const;
 
-  // Functions which return the depth of the tree and which nodes are at
-  // which generational depth could be helpful when drawing the tree.
+  // Future extensions:
+  // Functions which provide introspection on the graph could be useful when
+  // rendering the graph -- for example, the spread in generations in the tree,
+  // or which nodes belong to each generation.
 
  private:
   NodeMap nodes_;
   std::vector<TreeEdge> edges_;
-
-  // TODO(nloomis): map for which nodes belong to each generation.
 };
 
 }  // namespace family_tree

@@ -41,8 +41,15 @@ class TreeBuilder {
     int generation;
   };
 
+  // Returns true when there are no futher Person* pointers to trace.
   bool IsDone() const;
+
+  // Traces the next Traceable in the stacks, depth-first.
   void TraceNext();
+
+  // Traces the next upstream Traceable. If the node for the Traceable's person
+  // doesn't exist, it is added to nodes_.
+  // TODO(nloomis): complete this thought.
   void TraceNextUpstream();
   void TraceNextDownstream();
 

@@ -10,7 +10,7 @@ TreeNode TreeNode::OffspringNode(int relative_generation) {
   return node;
 }
 
-bool Tree::AddNode(const Person* person, const TreeNode& node) {
+bool Tree::AddIndividualNode(const Person* person, const TreeNode& node) {
   if (!NodeExists(person)) {
     nodes_.emplace(GetNodeMapKey(person), node);
     return true;
@@ -18,16 +18,19 @@ bool Tree::AddNode(const Person* person, const TreeNode& node) {
   return false;
 }
 
-bool Tree::AddNode(const std::list<Person*>& parents, const TreeNode& node) {
+bool Tree::AddOffspringNode(const std::list<Person*>& parents,
+                            int relative_generation) {
   if (!NodeExists(parents)) {
-    nodes_.emplace(GetNodeMapKey(parents), node);
+    nodes_.emplace(GetNodeMapKey(parents),
+                   TreeNode::OffspringNode(relative_generation));
     return true;
   }
   return false;
 }
 
-void Tree::AddTreeEdge(const NodeMapKey& node1, const NodeMapKey& node2) {
-  edges_.emplace_back(TreeEdge(node1, node2));
+void Tree::AddTreeEdge(const NodeMapKey& tail_node,
+                       const NodeMapKey& head_node) {
+  edges_.emplace_back(TreeEdge(tail_node, head_node));
 }
 
 bool Tree::NodeExists(const Person* person) const {
@@ -39,6 +42,8 @@ bool Tree::NodeExists(const std::list<Person*>& parents) const {
 }
 
 const NodeMapKey Tree::GetNodeMapKey(const Person* person) const {
+  // NodeMapKey is a std::pair for now; update this and the overloaded
+  // GetNodeMapKey if the type ever changes.
   return std::make_pair(person, person);
 }
 
@@ -51,4 +56,5 @@ const NodeMapKey Tree::GetNodeMapKey(const std::list<Person*>& parents) const {
   return std::make_pair(std::min(parents.front(), parents.back()), 
                         std::max(parents.front(), parents.back()));
 }
+
 }  //namespace family_tree

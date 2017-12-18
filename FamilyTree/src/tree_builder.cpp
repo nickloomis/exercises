@@ -60,10 +60,10 @@ void TreeBuilder::TraceNextUpstream() {
   std::cout << "Next upstream is " << traceable.person->name() << "\n";
   // TODO(nloomis): when done debugging, can get rid of the if/else statement for
   // clean code, yay!
-  if (tree_.AddNode(traceable.person,
-                    TreeNode(traceable.person->name(),
-                             relationship_.Label(traceable.person),
-                             traceable.generation))) {
+  if (tree_.AddIndividualNode(traceable.person,
+                              TreeNode(traceable.person->name(),
+                                       relationship_.Label(traceable.person),
+                                       traceable.generation))) {
     std::cout << "Adding a node for " << traceable.person->name() <<
      " (" << traceable.person << ")\n";
     std::cout << " generation: " << traceable.generation << "\n";
@@ -85,8 +85,7 @@ void TreeBuilder::TraceNextUpstream() {
     tree_.AddTreeEdge(offspring_key, tree_.GetNodeMapKey(traceable.person));
 
     // Add an offspring node for these parents if it doesn't aleady exist.
-    if (tree_.AddNode(parents,
-                      TreeNode::OffspringNode(traceable.generation - 1))) {
+    if (tree_.AddOffspringNode(parents, traceable.generation - 1)) {
       std::cout << " adding offspring node\n";
       for (const Person* parent : parents) {
         tree_.AddTreeEdge(tree_.GetNodeMapKey(parent), offspring_key);
