@@ -68,12 +68,4 @@ RelationshipType RelationshipLabeler::SiblingLabel(Person* other_person) const {
   return RelationshipType::HALF_SIBLING;
 }
 
-/*
-void RelationshipLabeler::PrintNamedRelationships() const {
-  for (const auto& kv : direct_relations_) {
-    std::cout << " " << kv.second << " is " << kv.first->name() << "\n";
-  }
-}
-*/
-
 }  // namespace family_tree
