@@ -30,7 +30,7 @@ bool Tree::AddOffspringNode(const std::list<Person*>& parents,
 
 void Tree::AddTreeEdge(const NodeMapKey& tail_node,
                        const NodeMapKey& head_node) {
-  edges_.emplace_front(TreeEdge(tail_node, head_node));
+  edges_.emplace_back(TreeEdge(tail_node, head_node));
 }
 
 bool Tree::NodeExists(const Person* person) const {
