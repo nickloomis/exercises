@@ -65,8 +65,6 @@ class TreeBuilder {
 
   const Tree& tree() { return tree_; }
 
-  void PrintStacks() const;
-
  private:
 
   // Minimum working data for following a traceable quantity through the tree.
@@ -112,10 +110,8 @@ class TreeBuilder {
   void TraceNextDownstream();
 
   // Track which Traceables need to have their subgraphs traced.
-  //std::stack<Traceable> upstream_to_trace_;
-  //std::stack<Traceable> downstream_to_trace_;
-  std::vector<Traceable> upstream_to_trace_;
-  std::vector<Traceable> downstream_to_trace_;
+  std::stack<Traceable> upstream_to_trace_;
+  std::stack<Traceable> downstream_to_trace_;
 
   // Storage for the tree built by the factory.
   Tree tree_;

@@ -1,15 +1,15 @@
 #include "relationship_labeler.h"
 
 #include <algorithm>
-#include <iostream>
 #include <utility>
 
 namespace family_tree {
 
 RelationshipLabeler::RelationshipLabeler(const Person* person) 
     : parents_of_reference_(person->parents()) {
-  // TODO(nloomis): note about why the const_cast is being used, and is OK
-  direct_relations_.emplace(std::make_pair(const_cast<Person*>(person), RelationshipType::SELF));
+  // The const_cast<> is because the map expects move-copy objects.
+  direct_relations_.emplace(std::make_pair(const_cast<Person*>(person),
+                                           RelationshipType::SELF));
 
   for (Person* parent : person->parents()) {
     // Record the parents.
@@ -34,7 +34,8 @@ RelationshipLabeler::RelationshipLabeler(const Person* person)
   for (Person* child : person->descendants()) {
     direct_relations_.emplace(std::make_pair(child, RelationshipType::CHILD));
     for (Person* grandchild : child->descendants()) {
-      direct_relations_.emplace(std::make_pair(grandchild, RelationshipType::GRANDCHILD));
+      direct_relations_.emplace(std::make_pair(grandchild,
+                                               RelationshipType::GRANDCHILD));
     }
   }
 

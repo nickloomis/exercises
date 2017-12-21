@@ -93,7 +93,7 @@ class Tree {
  public:
   // Accessors to member data.
   const std::map<NodeMapKey, TreeNode>& nodes() const {return nodes_; }
-  const std::vector<TreeEdge>& edges() const {return edges_; }
+  const std::list<TreeEdge>& edges() const {return edges_; }
 
   // Attempts to add the supplied TreeNode to the nodes_ map for an individual
   // person, returning tree if successful or false if the node already exists.
@@ -124,7 +124,7 @@ class Tree {
 
  private:
   std::map<NodeMapKey, TreeNode> nodes_;
-  std::vector<TreeEdge> edges_;
+  std::list<TreeEdge> edges_;
 };
 
 }  // namespace family_tree

@@ -5,7 +5,14 @@
 #include "graph_emitter.h"
 
 int main() {
-  // British royal family, from http://www.bbc.com/news/uk-23272491
+  // Create an example family tree for a large family: the British royal family;
+  // from http://www.bbc.com/news/uk-23272491 and other sources.
+  // Note: these objects are created verbosely as an example. In the real world,
+  // they might stem from a file, be dynamically populated (eg, a search query
+  // result), or otherwise be input by the user. The one requirement is that the
+  // pointers to the objects remain constant during runtime. (Be careful not
+  // to store Person objects in a vector, for example, as it may change the
+  // pointers to each object as new objects are added.
   family_tree::Person p_george5("George V", nullptr, nullptr);
   family_tree::Person p_mary("Mary", nullptr, nullptr);
   family_tree::Person p_george6("George VI", &p_george5, &p_mary);
@@ -48,59 +55,21 @@ int main() {
   family_tree::Person p_richard("Richard", &p_henry, &p_alice);
   family_tree::Person p_marina("Princess Marina", nullptr, nullptr);
   family_tree::Person p_edwardkent("Edward", &p_georgekent, &p_marina);
-  family_tree::Person p_alexandra("Princess Alexandra", &p_georgekent, &p_marina);
+  family_tree::Person p_alexandra("Princess Alexandra", &p_georgekent,
+                                  &p_marina);
   family_tree::Person p_michael("Prince Michael", &p_georgekent, &p_marina);
 
-/*	family_tree::Person person_adad("Alice's dad", nullptr, nullptr);
-	family_tree::Person person_amom("Alice's mom", nullptr, nullptr);
-  family_tree::Person person_a("Alice", &person_adad, &person_amom);
-  family_tree::Person person_bdad("Bob's dad", nullptr, nullptr);
-  family_tree::Person person_egads("Egads", nullptr, nullptr);
-  family_tree::Person person_gertie("Gertie", nullptr, nullptr);
-  family_tree::Person person_bgdad("Bob's grandpa", &person_egads, &person_gertie);
-  family_tree::Person person_bgmom("Bob's grandma", nullptr, nullptr);
-  family_tree::Person person_bmom("Bob's mom", &person_bgmom, &person_bgdad);
-  family_tree::Person person_b("Bob", &person_bmom, &person_bdad);
-  family_tree::Person person_c("Charlie", &person_a, &person_b);
-  family_tree::Person person_csis("Candice", &person_a, &person_b);
-  family_tree::Person person_cbro("Chuck", &person_a, &person_b);
-  family_tree::Person person_cdad("Carl's dad", nullptr, nullptr);
-  family_tree::Person person_carl("Carl", &person_a, &person_cdad);
-  family_tree::Person person_c1("David", &person_c, nullptr);
-  family_tree::Person person_c2("Erin", &person_c1, nullptr);
-  family_tree::Person person_c3("Frank", &person_c2, nullptr);
-  family_tree::Person person_c4("Griff", &person_c3, nullptr); 
-*/
-  //std::cout << "Hello world!" << std::endl;
-
-/*  person_a.PrintRelations();
-  person_b.PrintRelations();
-  person_c.PrintRelations();
-
-  RelationshipName relationships(&person_c);
-  relationships.PrintNamedRelationships();
-
-  TreeBuilderOptions options;
-  options.downstream_depth = 2;
-  TreeBuilder tree_builder(&person_c, options);
-  tree_builder.Build();
-*/
-
   family_tree::GraphEmitterOptions options;
-  //options.ancestor_depth = 1;  // TODO(nloomis): debug the depth!
+  //options.ancestor_depth = 1;
   //options.descendant_depth = 3;
   family_tree::GraphEmitter grapher(options);
   std::ofstream graph_file("qe2_graph.gv");
-  //person_c.GetFamilyTree(&grapher, graph_file);
-
-  p_qe2.GetFamilyTree(&grapher, graph_file);
+  p_qe2.GetFamilyTree(grapher, graph_file);
 
   std::ofstream harry_graph("harry_graph.gv");
   options.ancestor_depth = 2;
   family_tree::GraphEmitter harry_grapher(options);
-  p_harry.GetFamilyTree(&harry_grapher, harry_graph);
-
-  // tree_builder.GraphString();
+  p_harry.GetFamilyTree(harry_grapher, harry_graph);
 
   return 0;
 }

@@ -20,9 +20,6 @@ class Person {
   // Note: the parents could be made mutable. The Person might need to be
   // removed from the outgoing parent's descendants_ list in that case.
   Person(const std::string& name, Person* const parent1, Person* const parent2);
-
-  // TODO(nloomis): debugging.
-  void PrintRelations() const;
 		
   // Accessors.
   const std::string& name() const { return name_; }
@@ -31,7 +28,14 @@ class Person {
 
   // Causes a family tree to be built using this Person as the root individual.
   // All relationships and generations are relative to this Person.
-  void GetFamilyTree(GraphEmitter* grapher, std::ostream& output_stream) const;
+  void GetFamilyTree(const GraphEmitter& grapher,
+                     std::ostream& output_stream) const;
+  // Note: if there are multiple ways to emit graphs, we have two options:
+  //  1) make GraphEmitter a base class, and implement the emission mechanisms
+  //     in a derived class, or
+  //  2) make GraphEmitter an interface and pass emission mechanisms to its
+  //     constructor.
+  // Method 2 (via composition) is my preferred approach. 
 
  private:
   // Adds a child to the list of descendants_.
@@ -47,6 +51,8 @@ class Person {
   // List of this person's children, eg, people claiming this person as their
   // parent. The pointers are expected to be constant.
   std::list<Person*> descendants_;
+
+  // Partners could be listed here as well if desired.
 };
 
 }  // namespace family_tree

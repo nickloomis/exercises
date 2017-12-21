@@ -1,6 +1,6 @@
 #include "graph_emitter.h"
 
-#include <iostream>  // TODO(nloomis): for debug messages
+#include <iostream>
 #include <sstream>
 #include <string>
 
@@ -8,7 +8,9 @@
 
 namespace {
 
-// Returns a unique identifier string for the input NodeMapKey.
+// Returns a unique identifier string for the input NodeMapKey. The ID is based
+// on pointer values, and is not expected to be the same each time the binary is
+// run.
 std::string UniqueNodeIdString(const family_tree::NodeMapKey& key) {
   std::stringstream stream;
   stream << "\"";
@@ -40,7 +42,10 @@ void GraphEmitter::Emit(const Tree& tree, std::ostream& output_stream) const {
   std::cout << "Emitting graph with " << tree.nodes().size() << " nodes and " << 
     tree.edges().size() << " edges\n";
 
-  // TODO(nloomis): {rank=same; node1 node2 node3;}
+  // Offspring nodes give more control over how the graph gets rendered (and
+  // reduce visual clutter). To force the offspring nodes to appear at the same
+  // height as the parents, they should all be listed as having the same rank
+  // using the {rank=same; node1 node2 node3;} instruction.
 
   for (const auto& kv : tree.nodes()) {
     output_stream << UniqueNodeIdString(kv.first);
@@ -53,6 +58,7 @@ void GraphEmitter::Emit(const Tree& tree, std::ostream& output_stream) const {
       }
       output_stream << "\", ";
       if (kv.second.relationship == RelationshipType::SELF) {
+        // Highlight the root individual.
         output_stream << "style=\"bold, filled\", fillcolor=" <<
           options_.reference_individual_background_color;
       } else {
@@ -60,9 +66,10 @@ void GraphEmitter::Emit(const Tree& tree, std::ostream& output_stream) const {
           options_.default_individual_background_color;
       }
       output_stream << "];\n";
-      // TODO(nloomis): highlight the root individual
     } else {
-      // offspring node.
+      // Offspring node.
+      // The shape and size are arbitrary, and could be set via the options
+      // struct.
       output_stream << "[shape=circle, style=filled, label=\"\", " <<
        "height=0.1, width=0.1];\n";
     }
@@ -95,6 +102,7 @@ std::string GraphEmitter::RelationshipString(
     case RelationshipType::CHILD: return "child";
     case RelationshipType::GRANDCHILD: return "grandchild";
     case RelationshipType::OTHER: return "";
+    // There is no default, so all enum values must be handled.
   }
 }
 
