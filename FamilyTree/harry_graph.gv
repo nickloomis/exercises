@@ -1,22 +1,16 @@
 graph {
-"0x7ffd9b6207c0" [shape=box, label="Queen Elizabeth II
-grandparent", style=filled, fillcolor=white];
+"0x7ffd9b6207c0" [shape=box, label="Queen Elizabeth II\ngrandparent", style=filled, fillcolor=white];
 "0x7ffd9b6207c0+0x7ffd9b620810"[shape=circle, style=filled, label="", height=0.1, width=0.1];
-"0x7ffd9b620810" [shape=box, label="Phillip
-grandparent", style=filled, fillcolor=white];
-"0x7ffd9b620860" [shape=box, label="Prince Charles
-parent", style=filled, fillcolor=white];
+"0x7ffd9b620810" [shape=box, label="Phillip\ngrandparent", style=filled, fillcolor=white];
+"0x7ffd9b620860" [shape=box, label="Prince Charles\nparent", style=filled, fillcolor=white];
 "0x7ffd9b620860+0x7ffd9b6208b0"[shape=circle, style=filled, label="", height=0.1, width=0.1];
-"0x7ffd9b6208b0" [shape=box, label="Princess Diana
-parent", style=filled, fillcolor=white];
-"0x7ffd9b620900" [shape=box, label="Prince William
-sibling", style=filled, fillcolor=white];
+"0x7ffd9b6208b0" [shape=box, label="Princess Diana\nparent", style=filled, fillcolor=white];
+"0x7ffd9b620900" [shape=box, label="Prince William\nsibling", style=filled, fillcolor=white];
 "0x7ffd9b620900+0x7ffd9b620950"[shape=circle, style=filled, label="", height=0.1, width=0.1];
 "0x7ffd9b620950" [shape=box, label="Kate", style=filled, fillcolor=white];
 "0x7ffd9b6209a0" [shape=box, label="Prince George", style=filled, fillcolor=white];
 "0x7ffd9b6209f0" [shape=box, label="Princess Charlotte", style=filled, fillcolor=white];
-"0x7ffd9b620a40" [shape=box, label="Prince Harry
-self", style="bold, filled", fillcolor=azure1];
+"0x7ffd9b620a40" [shape=box, label="Prince Harry\nself", style="bold, filled", fillcolor=azure1];
 "0x7ffd9b620a90" [shape=box, label="Princess Anne", style=filled, fillcolor=white];
 "0x7ffd9b620a90+0x7ffd9b620ae0"[shape=circle, style=filled, label="", height=0.1, width=0.1];
 "0x7ffd9b620ae0" [shape=box, label="Mark Phillips", style=filled, fillcolor=white];

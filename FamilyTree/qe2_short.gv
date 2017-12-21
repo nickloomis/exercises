@@ -3,49 +3,37 @@ graph {
 self", style="bold, filled", fillcolor=azure1];
 "0x7ffdc4eb0470+0x7ffdc4eb04c0"[shape=circle, style=filled, label="", height=0.1, width=0.1];
 "0x7ffdc4eb04c0" [shape=box, label="Phillip", style=filled, fillcolor=white];
-"0x7ffdc4eb0510" [shape=box, label="Prince Charles
-child", style=filled, fillcolor=white];
+"0x7ffdc4eb0510" [shape=box, label="Prince Charles\nchild", style=filled, fillcolor=white];
 "0x7ffdc4eb0510+0x7ffdc4eb0560"[shape=circle, style=filled, label="", height=0.1, width=0.1];
 "0x7ffdc4eb0560" [shape=box, label="Princess Diana", style=filled, fillcolor=white];
-"0x7ffdc4eb05b0" [shape=box, label="Prince William
-grandchild", style=filled, fillcolor=white];
+"0x7ffdc4eb05b0" [shape=box, label="Prince William\ngrandchild", style=filled, fillcolor=white];
 "0x7ffdc4eb05b0+0x7ffdc4eb0600"[shape=circle, style=filled, label="", height=0.1, width=0.1];
 "0x7ffdc4eb0600" [shape=box, label="Kate", style=filled, fillcolor=white];
 "0x7ffdc4eb0650" [shape=box, label="Prince George", style=filled, fillcolor=white];
 "0x7ffdc4eb06a0" [shape=box, label="Princess Charlotte", style=filled, fillcolor=white];
-"0x7ffdc4eb06f0" [shape=box, label="Prince Harry
-grandchild", style=filled, fillcolor=white];
-"0x7ffdc4eb0740" [shape=box, label="Princess Anne
-child", style=filled, fillcolor=white];
+"0x7ffdc4eb06f0" [shape=box, label="Prince Harry\ngrandchild", style=filled, fillcolor=white];
+"0x7ffdc4eb0740" [shape=box, label="Princess Anne\nchild", style=filled, fillcolor=white];
 "0x7ffdc4eb0740+0x7ffdc4eb0790"[shape=circle, style=filled, label="", height=0.1, width=0.1];
 "0x7ffdc4eb0790" [shape=box, label="Mark Phillips", style=filled, fillcolor=white];
-"0x7ffdc4eb07e0" [shape=box, label="Peter Phillips
-grandchild", style=filled, fillcolor=white];
+"0x7ffdc4eb07e0" [shape=box, label="Peter Phillips\ngrandchild", style=filled, fillcolor=white];
 "0x7ffdc4eb07e0+0x7ffdc4eb0880"[shape=circle, style=filled, label="", height=0.1, width=0.1];
-"0x7ffdc4eb0830" [shape=box, label="Zara Tindall
-grandchild", style=filled, fillcolor=white];
+"0x7ffdc4eb0830" [shape=box, label="Zara Tindall\ngrandchild", style=filled, fillcolor=white];
 "0x7ffdc4eb0830+0x7ffdc4eb0970"[shape=circle, style=filled, label="", height=0.1, width=0.1];
 "0x7ffdc4eb0880" [shape=box, label="Autumn Phillips", style=filled, fillcolor=white];
 "0x7ffdc4eb08d0" [shape=box, label="Savannah Phillips", style=filled, fillcolor=white];
 "0x7ffdc4eb0920" [shape=box, label="Isla", style=filled, fillcolor=white];
 "0x7ffdc4eb0970" [shape=box, label="Mike Tindall", style=filled, fillcolor=white];
 "0x7ffdc4eb09c0" [shape=box, label="Mia Grace", style=filled, fillcolor=white];
-"0x7ffdc4eb0a10" [shape=box, label="Prince Andrew
-child", style=filled, fillcolor=white];
+"0x7ffdc4eb0a10" [shape=box, label="Prince Andrew\nchild", style=filled, fillcolor=white];
 "0x7ffdc4eb0a10+0x7ffdc4eb0a60"[shape=circle, style=filled, label="", height=0.1, width=0.1];
 "0x7ffdc4eb0a60" [shape=box, label="Sarah Ferguson", style=filled, fillcolor=white];
-"0x7ffdc4eb0ab0" [shape=box, label="Princess Beatrice
-grandchild", style=filled, fillcolor=white];
-"0x7ffdc4eb0b00" [shape=box, label="Princess Eugenie
-grandchild", style=filled, fillcolor=white];
-"0x7ffdc4eb0b50" [shape=box, label="Prince Edward
-child", style=filled, fillcolor=white];
+"0x7ffdc4eb0ab0" [shape=box, label="Princess Beatrice\ngrandchild", style=filled, fillcolor=white];
+"0x7ffdc4eb0b00" [shape=box, label="Princess Eugenie\ngrandchild", style=filled, fillcolor=white];
+"0x7ffdc4eb0b50" [shape=box, label="Prince Edward\nchild", style=filled, fillcolor=white];
 "0x7ffdc4eb0b50+0x7ffdc4eb0ba0"[shape=circle, style=filled, label="", height=0.1, width=0.1];
 "0x7ffdc4eb0ba0" [shape=box, label="Sophie Rhys-Jones", style=filled, fillcolor=white];
-"0x7ffdc4eb0bf0" [shape=box, label="Louise
-grandchild", style=filled, fillcolor=white];
-"0x7ffdc4eb0c40" [shape=box, label="James
-grandchild", style=filled, fillcolor=white];
+"0x7ffdc4eb0bf0" [shape=box, label="Louise\ngrandchild", style=filled, fillcolor=white];
+"0x7ffdc4eb0c40" [shape=box, label="James\ngrandchild", style=filled, fillcolor=white];
 "0x7ffdc4eb0470+0x7ffdc4eb04c0"--"0x7ffdc4eb0b50";
 "0x7ffdc4eb0470"--"0x7ffdc4eb0470+0x7ffdc4eb04c0";
 "0x7ffdc4eb04c0"--"0x7ffdc4eb0470+0x7ffdc4eb04c0";
