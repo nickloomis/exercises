@@ -1,0 +1,133 @@
+graph {
+"0x7ffd9b620680" [shape=box, label="George V
+grandparent", style=filled, fillcolor=white];
+"0x7ffd9b620680+0x7ffd9b6206d0"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffd9b6206d0" [shape=box, label="Mary
+grandparent", style=filled, fillcolor=white];
+"0x7ffd9b620720" [shape=box, label="George VI
+parent", style=filled, fillcolor=white];
+"0x7ffd9b620720+0x7ffd9b620770"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffd9b620770" [shape=box, label="Elizabeth
+parent", style=filled, fillcolor=white];
+"0x7ffd9b6207c0" [shape=box, label="Queen Elizabeth II
+self", style="bold, filled", fillcolor=azure1];
+"0x7ffd9b6207c0+0x7ffd9b620810"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffd9b620810" [shape=box, label="Phillip", style=filled, fillcolor=white];
+"0x7ffd9b620860" [shape=box, label="Prince Charles
+child", style=filled, fillcolor=white];
+"0x7ffd9b620860+0x7ffd9b6208b0"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffd9b6208b0" [shape=box, label="Princess Diana", style=filled, fillcolor=white];
+"0x7ffd9b620900" [shape=box, label="Prince William
+grandchild", style=filled, fillcolor=white];
+"0x7ffd9b620900+0x7ffd9b620950"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffd9b620950" [shape=box, label="Kate", style=filled, fillcolor=white];
+"0x7ffd9b6209a0" [shape=box, label="Prince George", style=filled, fillcolor=white];
+"0x7ffd9b6209f0" [shape=box, label="Princess Charlotte", style=filled, fillcolor=white];
+"0x7ffd9b620a40" [shape=box, label="Prince Harry
+grandchild", style=filled, fillcolor=white];
+"0x7ffd9b620a90" [shape=box, label="Princess Anne
+child", style=filled, fillcolor=white];
+"0x7ffd9b620a90+0x7ffd9b620ae0"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffd9b620ae0" [shape=box, label="Mark Phillips", style=filled, fillcolor=white];
+"0x7ffd9b620b30" [shape=box, label="Peter Phillips
+grandchild", style=filled, fillcolor=white];
+"0x7ffd9b620b30+0x7ffd9b620bd0"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffd9b620b80" [shape=box, label="Zara Tindall
+grandchild", style=filled, fillcolor=white];
+"0x7ffd9b620b80+0x7ffd9b620cc0"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffd9b620bd0" [shape=box, label="Autumn Phillips", style=filled, fillcolor=white];
+"0x7ffd9b620c20" [shape=box, label="Savannah Phillips", style=filled, fillcolor=white];
+"0x7ffd9b620c70" [shape=box, label="Isla", style=filled, fillcolor=white];
+"0x7ffd9b620cc0" [shape=box, label="Mike Tindall", style=filled, fillcolor=white];
+"0x7ffd9b620d10" [shape=box, label="Mia Grace", style=filled, fillcolor=white];
+"0x7ffd9b620d60" [shape=box, label="Prince Andrew
+child", style=filled, fillcolor=white];
+"0x7ffd9b620d60+0x7ffd9b620db0"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffd9b620db0" [shape=box, label="Sarah Ferguson", style=filled, fillcolor=white];
+"0x7ffd9b620e00" [shape=box, label="Princess Beatrice
+grandchild", style=filled, fillcolor=white];
+"0x7ffd9b620e50" [shape=box, label="Princess Eugenie
+grandchild", style=filled, fillcolor=white];
+"0x7ffd9b620ea0" [shape=box, label="Prince Edward
+child", style=filled, fillcolor=white];
+"0x7ffd9b620ea0+0x7ffd9b620ef0"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffd9b620ef0" [shape=box, label="Sophie Rhys-Jones", style=filled, fillcolor=white];
+"0x7ffd9b620f40" [shape=box, label="Louise
+grandchild", style=filled, fillcolor=white];
+"0x7ffd9b620f90" [shape=box, label="James
+grandchild", style=filled, fillcolor=white];
+"0x7ffd9b620fe0" [shape=box, label="Margaret
+sibling", style=filled, fillcolor=white];
+"0x7ffd9b620fe0+0x7ffd9b621030"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffd9b621030" [shape=box, label="Anthony Armstrong-Jones", style=filled, fillcolor=white];
+"0x7ffd9b621080" [shape=box, label="David Armstrong-Jones", style=filled, fillcolor=white];
+"0x7ffd9b6210d0" [shape=box, label="Edward VIII", style=filled, fillcolor=white];
+"0x7ffd9b621120" [shape=box, label="Princess Mary", style=filled, fillcolor=white];
+"0x7ffd9b621170" [shape=box, label="Prince John", style=filled, fillcolor=white];
+"0x7ffd9b6211c0" [shape=box, label="Prince Henry", style=filled, fillcolor=white];
+"0x7ffd9b6211c0+0x7ffd9b621260"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffd9b621210" [shape=box, label="Prince George", style=filled, fillcolor=white];
+"0x7ffd9b621210+0x7ffd9b621300"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffd9b621260" [shape=box, label="Alice Montegu", style=filled, fillcolor=white];
+"0x7ffd9b6212b0" [shape=box, label="Richard", style=filled, fillcolor=white];
+"0x7ffd9b621300" [shape=box, label="Princess Marina", style=filled, fillcolor=white];
+"0x7ffd9b621350" [shape=box, label="Edward", style=filled, fillcolor=white];
+"0x7ffd9b6213a0" [shape=box, label="Princess Alexandra", style=filled, fillcolor=white];
+"0x7ffd9b6213f0" [shape=box, label="Prince Michael", style=filled, fillcolor=white];
+"0x7ffd9b620ea0+0x7ffd9b620ef0"--"0x7ffd9b620f40";
+"0x7ffd9b620ef0"--"0x7ffd9b620ea0+0x7ffd9b620ef0";
+"0x7ffd9b620ea0"--"0x7ffd9b620ea0+0x7ffd9b620ef0";
+"0x7ffd9b620ea0+0x7ffd9b620ef0"--"0x7ffd9b620f90";
+"0x7ffd9b620d60+0x7ffd9b620db0"--"0x7ffd9b620e00";
+"0x7ffd9b620db0"--"0x7ffd9b620d60+0x7ffd9b620db0";
+"0x7ffd9b620d60"--"0x7ffd9b620d60+0x7ffd9b620db0";
+"0x7ffd9b620d60+0x7ffd9b620db0"--"0x7ffd9b620e50";
+"0x7ffd9b620cc0"--"0x7ffd9b620b80+0x7ffd9b620cc0";
+"0x7ffd9b620b80"--"0x7ffd9b620b80+0x7ffd9b620cc0";
+"0x7ffd9b620b80+0x7ffd9b620cc0"--"0x7ffd9b620d10";
+"0x7ffd9b620b30+0x7ffd9b620bd0"--"0x7ffd9b620c20";
+"0x7ffd9b620bd0"--"0x7ffd9b620b30+0x7ffd9b620bd0";
+"0x7ffd9b620b30"--"0x7ffd9b620b30+0x7ffd9b620bd0";
+"0x7ffd9b620b30+0x7ffd9b620bd0"--"0x7ffd9b620c70";
+"0x7ffd9b620a90+0x7ffd9b620ae0"--"0x7ffd9b620b30";
+"0x7ffd9b620ae0"--"0x7ffd9b620a90+0x7ffd9b620ae0";
+"0x7ffd9b620a90"--"0x7ffd9b620a90+0x7ffd9b620ae0";
+"0x7ffd9b620a90+0x7ffd9b620ae0"--"0x7ffd9b620b80";
+"0x7ffd9b620900+0x7ffd9b620950"--"0x7ffd9b6209a0";
+"0x7ffd9b620950"--"0x7ffd9b620900+0x7ffd9b620950";
+"0x7ffd9b620900"--"0x7ffd9b620900+0x7ffd9b620950";
+"0x7ffd9b620900+0x7ffd9b620950"--"0x7ffd9b6209f0";
+"0x7ffd9b620860+0x7ffd9b6208b0"--"0x7ffd9b620900";
+"0x7ffd9b620860"--"0x7ffd9b620860+0x7ffd9b6208b0";
+"0x7ffd9b6208b0"--"0x7ffd9b620860+0x7ffd9b6208b0";
+"0x7ffd9b620860+0x7ffd9b6208b0"--"0x7ffd9b620a40";
+"0x7ffd9b6207c0+0x7ffd9b620810"--"0x7ffd9b620860";
+"0x7ffd9b6207c0+0x7ffd9b620810"--"0x7ffd9b620a90";
+"0x7ffd9b6207c0+0x7ffd9b620810"--"0x7ffd9b620d60";
+"0x7ffd9b620810"--"0x7ffd9b6207c0+0x7ffd9b620810";
+"0x7ffd9b6207c0"--"0x7ffd9b6207c0+0x7ffd9b620810";
+"0x7ffd9b6207c0+0x7ffd9b620810"--"0x7ffd9b620ea0";
+"0x7ffd9b621030"--"0x7ffd9b620fe0+0x7ffd9b621030";
+"0x7ffd9b620fe0"--"0x7ffd9b620fe0+0x7ffd9b621030";
+"0x7ffd9b620fe0+0x7ffd9b621030"--"0x7ffd9b621080";
+"0x7ffd9b620720+0x7ffd9b620770"--"0x7ffd9b620fe0";
+"0x7ffd9b621210+0x7ffd9b621300"--"0x7ffd9b621350";
+"0x7ffd9b621210+0x7ffd9b621300"--"0x7ffd9b6213a0";
+"0x7ffd9b621300"--"0x7ffd9b621210+0x7ffd9b621300";
+"0x7ffd9b621210"--"0x7ffd9b621210+0x7ffd9b621300";
+"0x7ffd9b621210+0x7ffd9b621300"--"0x7ffd9b6213f0";
+"0x7ffd9b621260"--"0x7ffd9b6211c0+0x7ffd9b621260";
+"0x7ffd9b6211c0"--"0x7ffd9b6211c0+0x7ffd9b621260";
+"0x7ffd9b6211c0+0x7ffd9b621260"--"0x7ffd9b6212b0";
+"0x7ffd9b620680+0x7ffd9b6206d0"--"0x7ffd9b6210d0";
+"0x7ffd9b620680+0x7ffd9b6206d0"--"0x7ffd9b621120";
+"0x7ffd9b620680+0x7ffd9b6206d0"--"0x7ffd9b621170";
+"0x7ffd9b620680+0x7ffd9b6206d0"--"0x7ffd9b6211c0";
+"0x7ffd9b620680+0x7ffd9b6206d0"--"0x7ffd9b621210";
+"0x7ffd9b6206d0"--"0x7ffd9b620680+0x7ffd9b6206d0";
+"0x7ffd9b620680"--"0x7ffd9b620680+0x7ffd9b6206d0";
+"0x7ffd9b620680+0x7ffd9b6206d0"--"0x7ffd9b620720";
+"0x7ffd9b620770"--"0x7ffd9b620720+0x7ffd9b620770";
+"0x7ffd9b620720"--"0x7ffd9b620720+0x7ffd9b620770";
+"0x7ffd9b620720+0x7ffd9b620770"--"0x7ffd9b6207c0";
+}
