@@ -5,7 +5,6 @@
 #include <string>
 
 #include "tree_builder.h"
-#include "typedefs.h"
 
 namespace {
 

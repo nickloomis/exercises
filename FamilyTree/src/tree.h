@@ -21,9 +21,15 @@
 #include <vector>
 
 #include "relationship_type.h"
-#include "typedefs.h"
 
 namespace family_tree {
+
+// Forward declarations:
+class Person;
+
+// Key for a map which stores unique nodes in a family tree.
+typedef std::pair<const Person*, const Person*> NodeMapKey;
+
 
 enum class TreeNodeType {
   // Node which represents a single person.
@@ -86,7 +92,7 @@ struct TreeEdge {
 class Tree {
  public:
   // Accessors to member data.
-  const NodeMap& nodes() const {return nodes_; }
+  const std::map<NodeMapKey, TreeNode>& nodes() const {return nodes_; }
   const std::vector<TreeEdge>& edges() const {return edges_; }
 
   // Attempts to add the supplied TreeNode to the nodes_ map for an individual
@@ -117,7 +123,7 @@ class Tree {
   // or which nodes belong to each generation.
 
  private:
-  NodeMap nodes_;
+  std::map<NodeMapKey, TreeNode> nodes_;
   std::vector<TreeEdge> edges_;
 };
 

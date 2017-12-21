@@ -8,7 +8,6 @@
 #include "person.h"
 #include "relationship_labeler.h"
 #include "tree.h"
-#include "typedefs.h"
 
 namespace family_tree {
 
