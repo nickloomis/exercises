@@ -60,16 +60,20 @@ int main() {
   family_tree::Person p_michael("Prince Michael", &p_georgekent, &p_marina);
 
   family_tree::GraphEmitterOptions options;
-  //options.ancestor_depth = 1;
-  //options.descendant_depth = 3;
   family_tree::GraphEmitter grapher(options);
   std::ofstream graph_file("qe2_graph.gv");
   p_qe2.GetFamilyTree(grapher, graph_file);
 
+  options.ancestor_depth = 0;
+  options.descendant_depth = 3;
+  grapher = family_tree::GraphEmitter(options);
+  std::ofstream short_graph_file("qe2_short.gv");
+  p_qe2.GetFamilyTree(grapher, short_graph_file);
+
   std::ofstream harry_graph("harry_graph.gv");
   options.ancestor_depth = 2;
-  family_tree::GraphEmitter harry_grapher(options);
-  p_harry.GetFamilyTree(harry_grapher, harry_graph);
+  grapher = family_tree::GraphEmitter(options);
+  p_harry.GetFamilyTree(grapher, harry_graph);
 
   return 0;
 }
