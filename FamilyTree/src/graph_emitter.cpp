@@ -54,7 +54,7 @@ void GraphEmitter::Emit(const Tree& tree, std::ostream& output_stream) const {
       const std::string& relationship_string =
           RelationshipString(kv.second.relationship);
       if (!relationship_string.empty()) {
-        output_stream << "\n" << relationship_string;
+        output_stream << "\\n" << relationship_string;
       }
       output_stream << "\", ";
       if (kv.second.relationship == RelationshipType::SELF) {
