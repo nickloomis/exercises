@@ -18,7 +18,6 @@
 #include <list>
 #include <map>
 #include <string>
-#include <vector>
 
 #include "relationship_type.h"
 

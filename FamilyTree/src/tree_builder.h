@@ -3,7 +3,6 @@
 
 #include <limits>
 #include <stack>
-#include <vector>
 
 #include "person.h"
 #include "relationship_labeler.h"

@@ -5,6 +5,7 @@
 #include "graph_emitter.h"
 
 int main() {
+  /*
   // Create an example family tree for a large family: the British royal family;
   // from http://www.bbc.com/news/uk-23272491 and other sources.
   // Note: these objects are created verbosely as an example. In the real world,
@@ -74,6 +75,23 @@ int main() {
   options.ancestor_depth = 2;
   grapher = family_tree::GraphEmitter(options);
   p_harry.GetFamilyTree(grapher, harry_graph);
+
+ */
+
+  // Half- and step-siblings example
+  family_tree::Person p_a("A", nullptr, nullptr);
+  family_tree::Person p_b("B", nullptr, nullptr);
+  family_tree::Person p_c("C", &p_a, &p_b);
+  family_tree::Person p_d("D", &p_a, &p_b);
+  family_tree::Person p_f("F", nullptr, nullptr);
+  family_tree::Person p_g("G", &p_a, &p_f);
+  family_tree::Person p_h("H", &p_a, &p_f);
+  family_tree::Person p_l("L", nullptr, nullptr);
+  family_tree::Person p_m("M", &p_f, &p_l);
+
+  family_tree::GraphEmitter grapher(family_tree::GraphEmitterOptions());
+  std::ofstream step_file("step_siblings.gv");
+  p_g.GetFamilyTree(grapher, step_file);
 
   return 0;
 }
