@@ -27,7 +27,8 @@ class RelationshipLabeler {
   // sibling label is returned if the other_person and the reference_individual
   // (set during construction) share all of the same parents. A half-sibling has
   // only one of the two parents in common. If both people have only one parent,
-  // they are considered siblings since half-relations can't be determined.
+  // they are considered siblings since half-relations can't be determined. Step
+  // siblings are not considered by this function.
   // 
   // The function is expected to be called ONLY for other_person's who are known
   // to be some sort of sibling to the reference_individual. (If not, the result
@@ -38,8 +39,8 @@ class RelationshipLabeler {
   //
   // Note: the fragile nature of SiblingLabel is OK here because it is called in
   // a tightly controlled manner during object construction. Checks for "self"
-  // no shared parents would make it more robust if the function were promoted
-  // to public.
+  // and no shared parents would make it more robust if the function were
+  // promoted to public.
   RelationshipType SiblingLabel (Person* other_person) const;
 
   // Store a map of all known direct relationships to the reference individual.

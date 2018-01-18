@@ -8,7 +8,8 @@ namespace family_tree {
 
 Person::Person(const std::string& name, Person* const parent1,
                Person* const parent2) 
-      : name_(name) {
+      : name_(name),
+        spouse_(nullptr) {
   if (parent1) {
     parents_.push_back(parent1);
     parent1->AddDescendant(this);
@@ -26,6 +27,23 @@ void Person::GetFamilyTree(const GraphEmitter& grapher,
   // construction.
   TreeBuilder tree_builder(this, grapher.TreeOptions());
   grapher.Emit(tree_builder.tree(), output_stream);
+}
+
+bool Person::Marry(Person* const partner) {
+  // Check that both individuals are able to enter into a new spousal relation.
+  if (spouse_ || spouse_->spouse()) {
+    return false;
+  }
+  SetSpouse(partner);
+  partner->SetSpouse(this);
+  return true;
+}
+
+void Person::Divorce() {
+  if (spouse_) {
+    spouse_->SetSpouse(nullptr);
+    spouse_ = nullptr;
+  }
 }
 
 void Person::AddDescendant(Person* const descendant) {

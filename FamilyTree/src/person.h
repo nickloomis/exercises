@@ -25,6 +25,7 @@ class Person {
   const std::string& name() const { return name_; }
   const std::list<Person*>& parents() const { return parents_; }
   const std::list<Person*>& descendants() const { return descendants_; }
+  const Person* spouse() const { return spouse_; }
 
   // Causes a family tree to be built using this Person as the root individual.
   // All relationships and generations are relative to this Person.
@@ -37,9 +38,22 @@ class Person {
   //     constructor.
   // Method 2 (via composition) is my preferred approach. 
 
+  // Associates this person and the partner as spouses to each other. If both
+  // people are unmarried, returns true. If either is currently married and a
+  // new marriage is thus not possible, returns false. Marry() only needs to be
+  // called for one person in the spousal relationship.
+  bool Marry(Person* const partner);
+
+  // Removes the spousal relationship for this person and the spouse. Divorce()
+  // only needs to be called for one person in the spousal relationship.
+  void Divorce();
+
  private:
-  // Adds a child to the list of descendants_.
+  // Adds a child to the list of descendants.
   void AddDescendant(Person* const);
+
+  // Assigns the current spouse.
+  void SetSpouse(Person* const partner) { spouse_ = partner; }
 
   // Name of the person.
   const std::string name_;
@@ -52,7 +66,9 @@ class Person {
   // parent. The pointers are expected to be constant.
   std::list<Person*> descendants_;
 
-  // Partners could be listed here as well if desired.
+  // Pointer to the current spouse. A nullptr signifies that no spouse is known,
+  // or that the spousal relationship is not explicitly recorded.
+  Person* spouse_;
 };
 
 }  // namespace family_tree

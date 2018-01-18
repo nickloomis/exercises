@@ -89,7 +89,7 @@ int main() {
   family_tree::Person p_l("L", nullptr, nullptr);
   family_tree::Person p_m("M", &p_f, &p_l);
 
-  family_tree::GraphEmitter grapher(family_tree::GraphEmitterOptions());
+  family_tree::GraphEmitter grapher{family_tree::GraphEmitterOptions()};
   std::ofstream step_file("step_siblings.gv");
   p_g.GetFamilyTree(grapher, step_file);
 

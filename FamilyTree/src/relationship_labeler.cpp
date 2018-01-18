@@ -39,6 +39,23 @@ RelationshipLabeler::RelationshipLabeler(const Person* person)
     }
   }
 
+  // Check for any step-siblings. Note that any full or half siblings will have
+  // already been identified based on inheritance only. Any additional siblings
+  // discovered based on the parents' spousal relationship must then be step
+  // siblings.
+  for (Person* parent : person->parents()) {
+    if (parent->spouse()) {
+      // Find the children of the parents' spouses.
+      for (Person* child : parent->spouse()->descendants()) {
+        auto it = direct_relations_.find(const_cast<Person*>(child));
+        if (it == direct_relations_.end()) {
+          // Add the relation if it is not already known as a different sibling.
+          direct_relations_.emplace(
+            std::make_pair(child, RelationshipType::STEP_SIBLING));
+        }
+      }
+    }
+  }
 }
 
 RelationshipType RelationshipLabeler::Label(const Person* person) const {
