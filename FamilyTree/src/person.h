@@ -68,7 +68,7 @@ class Person {
 
   // Pointer to the current spouse. A nullptr signifies that no spouse is known,
   // or that the spousal relationship is not explicitly recorded.
-  Person* spouse_;
+  Person* spouse_ = nullptr;
 };
 
 }  // namespace family_tree

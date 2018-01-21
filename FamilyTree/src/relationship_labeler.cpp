@@ -43,11 +43,20 @@ RelationshipLabeler::RelationshipLabeler(const Person* person)
   // already been identified based on inheritance only. Any additional siblings
   // discovered based on the parents' spousal relationship must then be step
   // siblings.
+  std::cout << "Person " << person->name() << " has " << person->parents().size() << " parents\n";
   for (Person* parent : person->parents()) {
-    if (parent->spouse()) {
+    Person* spouse = const_cast<Person*>(parent->spouse());
+    if (spouse) {
+      // If the spouse is not a biological parent, add them as a step-parent.
+      auto it_step = direct_relations_.find(spouse);
+      if (it_step == direct_relations_.end()) {
+        direct_relations_.emplace(
+          std::make_pair(spouse, RelationshipType::STEP_PARENT));
+      }
+
       // Find the children of the parents' spouses.
-      for (Person* child : parent->spouse()->descendants()) {
-        auto it = direct_relations_.find(const_cast<Person*>(child));
+      for (Person* child : spouse->descendants()) {
+        auto it = direct_relations_.find(child);
         if (it == direct_relations_.end()) {
           // Add the relation if it is not already known as a different sibling.
           direct_relations_.emplace(

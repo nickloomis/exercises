@@ -1,0 +1,25 @@
+graph {
+"0x7ffc4a68b6a0" [shape=box, label="A\nparent", style=filled, fillcolor=white];
+"0x7ffc4a68b6a0+0x7ffc4a68b700"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffc4a68b6a0+0x7ffc4a68b820"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffc4a68b700" [shape=box, label="B\nparent", style=filled, fillcolor=white];
+"0x7ffc4a68b760" [shape=box, label="C\nself", style="bold, filled", fillcolor=azure1];
+"0x7ffc4a68b7c0" [shape=box, label="D\nsibling", style=filled, fillcolor=white];
+"0x7ffc4a68b820" [shape=box, label="F\nstep-parent", style=filled, fillcolor=white];
+"0x7ffc4a68b820+0x7ffc4a68b940"[shape=circle, style=filled, label="", height=0.1, width=0.1];
+"0x7ffc4a68b880" [shape=box, label="G\nhalf-sibling", style=filled, fillcolor=white];
+"0x7ffc4a68b8e0" [shape=box, label="H\nhalf-sibling", style=filled, fillcolor=white];
+"0x7ffc4a68b940" [shape=box, label="L", style=filled, fillcolor=white];
+"0x7ffc4a68b9a0" [shape=box, label="M\nstep-sibling", style=filled, fillcolor=white];
+"0x7ffc4a68b6a0+0x7ffc4a68b700"--"0x7ffc4a68b760";
+"0x7ffc4a68b6a0"--"0x7ffc4a68b6a0+0x7ffc4a68b700";
+"0x7ffc4a68b700"--"0x7ffc4a68b6a0+0x7ffc4a68b700";
+"0x7ffc4a68b6a0+0x7ffc4a68b820"--"0x7ffc4a68b8e0";
+"0x7ffc4a68b6a0"--"0x7ffc4a68b6a0+0x7ffc4a68b820";
+"0x7ffc4a68b820"--"0x7ffc4a68b6a0+0x7ffc4a68b820";
+"0x7ffc4a68b6a0+0x7ffc4a68b820"--"0x7ffc4a68b880";
+"0x7ffc4a68b6a0+0x7ffc4a68b700"--"0x7ffc4a68b7c0";
+"0x7ffc4a68b820+0x7ffc4a68b940"--"0x7ffc4a68b9a0";
+"0x7ffc4a68b820"--"0x7ffc4a68b820+0x7ffc4a68b940";
+"0x7ffc4a68b940"--"0x7ffc4a68b820+0x7ffc4a68b940";
+}

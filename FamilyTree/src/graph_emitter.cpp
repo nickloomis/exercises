@@ -96,9 +96,11 @@ std::string GraphEmitter::RelationshipString(
   switch (relationship) {
     case RelationshipType::SELF: return "self";
     case RelationshipType::PARENT: return "parent";
+    case RelationshipType::STEP_PARENT: return "step-parent";
     case RelationshipType::GRANDPARENT: return "grandparent";
     case RelationshipType::SIBLING: return "sibling";
     case RelationshipType::HALF_SIBLING: return "half-sibling";
+    case RelationshipType::STEP_SIBLING: return "step-sibling";
     case RelationshipType::CHILD: return "child";
     case RelationshipType::GRANDCHILD: return "grandchild";
     case RelationshipType::OTHER: return "";

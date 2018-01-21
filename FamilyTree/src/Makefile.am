@@ -19,7 +19,6 @@ familytree_SOURCES = \
 	person.h \
 	tree_builder.h \
 	tree_builder.cpp \
-	typedefs.h \
 	graph_emitter.cpp \
 	graph_emitter.h \
 	relationship_labeler.cpp \

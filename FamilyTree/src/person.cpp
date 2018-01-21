@@ -31,7 +31,13 @@ void Person::GetFamilyTree(const GraphEmitter& grapher,
 
 bool Person::Marry(Person* const partner) {
   // Check that both individuals are able to enter into a new spousal relation.
-  if (spouse_ || spouse_->spouse()) {
+  if (spouse_) {
+    return false;
+  }
+  if (!partner) {
+    return false;
+  }
+  if (partner->spouse()) {
     return false;
   }
   SetSpouse(partner);

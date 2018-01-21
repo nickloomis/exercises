@@ -6,6 +6,9 @@ namespace family_tree {
 enum class RelationshipType {
   SELF,
   PARENT,
+  // A step-parent is not biologically related, but is the spouse of a
+  // biological parent.
+  STEP_PARENT,
   GRANDPARENT,
   // A sibling has the same parents.
   SIBLING,

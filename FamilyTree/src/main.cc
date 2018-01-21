@@ -89,9 +89,21 @@ int main() {
   family_tree::Person p_l("L", nullptr, nullptr);
   family_tree::Person p_m("M", &p_f, &p_l);
 
+  std::cout << "A is getting married!\n";
+  p_a.Marry(&p_b);
+  std::cout << "A's spouse's pointer is " << p_a.spouse() << "\n";
+  std::cout << p_a.name() << " is married to " << p_a.spouse()->name() << "\n";
+
+  std::cout << "A is getting divorced\n";
+  p_a.Divorce();
+
+  p_a.Marry(&p_f);
+  std::cout << p_a.name() << " is married to " << p_a.spouse()->name() << "\n";
+
   family_tree::GraphEmitter grapher{family_tree::GraphEmitterOptions()};
   std::ofstream step_file("step_siblings.gv");
-  p_g.GetFamilyTree(grapher, step_file);
+  // p_g.GetFamilyTree(grapher, step_file);
+  p_c.GetFamilyTree(grapher, step_file);
 
   return 0;
 }
